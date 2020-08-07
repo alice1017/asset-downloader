@@ -1,4 +1,7 @@
+// Types
+// Libraries
 import { Command, flags } from "@oclif/command";
+
 
 const pkg: any = require("../package.json");
 
