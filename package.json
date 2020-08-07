@@ -12,7 +12,9 @@
     "/lib"
   ],
   "scripts": {
-    "build": "rm -rf lib && tsc -b"
+    "build": "rm -rf lib && tsc -b",
+    "test": "nyc --extension .ts mocha --forbid-only",
+    "report": "nyc report"
   },
   "dependencies": {
     "@oclif/command": "^1.7.0",

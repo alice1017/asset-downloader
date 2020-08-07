@@ -1,0 +1,5 @@
+--recursive
+--require espower-typescript/guess
+--watch-extensions ts
+--reporter spec
+--timeout 50000
