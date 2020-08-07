@@ -4,7 +4,7 @@ const pkg: any = require("../package.json");
 
 export class ApplicationCommand extends Command {
 
-  static usage = "asset-downloader [options]";
+  static usage = " [options]";
   static description = pkg.description;
   static flags = {
     query: flags.string({
