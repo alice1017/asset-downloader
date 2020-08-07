@@ -4,6 +4,16 @@
   "version": "0.0.1",
   "author": "Alice1017",
   "license": "MIT",
+  "bin": {
+    "asset-downloader": "./bin/run"
+  },
+  "files": [
+    "/bin",
+    "/lib"
+  ],
+  "scripts": {
+    "build": "rm -rf lib && tsc -b"
+  },
   "dependencies": {
     "@oclif/command": "^1.7.0",
     "axios": "^0.19.2",

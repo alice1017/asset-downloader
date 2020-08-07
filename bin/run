@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const { resolve } = require('path');
+const project = resolve('tsconfig.json');
+const dev = fs.existsSync(project);
+const errorHandle = require('@oclif/errors/handle');
+
+if (dev) {
+  require('ts-node').register({project})
+}
+
+require(`../${dev ? 'src' : 'lib'}`)
+  .run()
+  .catch(errorHandle);
