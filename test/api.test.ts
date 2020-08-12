@@ -29,4 +29,24 @@ describe("src/api.ts", () => {
 
   });
 
+  describe("Method: repository", () => {
+
+    it("The owner of 'peco/peco' repository is 'peco'", async () => {
+
+      const clientMock = sinon.mock(client).expects("repository");
+      clientMock.withArgs("peco", "peco").returns({
+        owner: { login: "peco" }
+      });
+
+      const response = await client.repository("peco", "peco");
+      assert.equal(
+        response.owner.login,
+        "peco"
+      );
+
+    });
+
+  });
+
+
 });
