@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "build": "rm -rf lib && tsc -b",
-    "test": "nyc --extension .ts mocha --forbid-only",
+    "test": "mocha",
+    "coverage": "nyc --extension .ts mocha --forbid-only",
     "report": "nyc report"
   },
   "dependencies": {
