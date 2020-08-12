@@ -10,13 +10,13 @@ describe("src/api.ts", () => {
 
   const client = new GithubAPIClient();
 
-  describe("Method: search.repositories", () => {
+  describe("Method: GithubAPIClient.search", () => {
 
     it("A full-name of 1st item is 'peco/peco' when search by 'peco'", async () => {
 
       const clientMock = sinon.mock(client).expects("search");
       clientMock.withArgs("peco").returns({
-        items: [{"full_name": "peco/peco"}]
+        items: [{ full_name: "peco/peco" }]
       });
 
       const response = await client.search("peco");
@@ -29,7 +29,7 @@ describe("src/api.ts", () => {
 
   });
 
-  describe("Method: repository", () => {
+  describe("Method: GithubAPIClient.repository", () => {
 
     it("The owner of 'peco/peco' repository is 'peco'", async () => {
 
