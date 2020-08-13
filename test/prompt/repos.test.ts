@@ -2,6 +2,7 @@
 // Target
 import {
   renderRepositories,
+  column2Choice
 } from "../../src/prompt/repos";
 // Libraries
 import assert = require("assert");
@@ -59,6 +60,25 @@ describe("src/prompt/repos.ts", () => {
       assert.equal(
         column,
         "abc/def  description\nABCD/EFG DESCRIPTION"
+      );
+    });
+
+  });
+
+  describe("Function: column2Choice", () => {
+
+    it("Return choices correctly", () => {
+      const name = "abc/def";
+      const description = "description";
+      const column = `${name} ${description}`;
+
+      assert.deepEqual(
+        column2Choice(column),
+        [{
+          name: column,
+          value: name,
+          short: name
+        }]
       );
     });
 
