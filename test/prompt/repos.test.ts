@@ -2,7 +2,8 @@
 // Target
 import {
   renderRepositories,
-  column2Choice
+  column2Choice,
+  makeQuestions
 } from "../../src/prompt/repos";
 // Libraries
 import assert = require("assert");
@@ -80,6 +81,33 @@ describe("src/prompt/repos.ts", () => {
           short: name
         }]
       );
+    });
+
+  });
+
+  describe("Function: makeQuestions", () => {
+
+    it("Return questions correctly", () => {
+
+      const name = "abc/def";
+      const description = "description";
+      const choices = [{
+        name: `${name} ${description}`,
+        value: name,
+        short: name
+      }];
+
+      assert.deepEqual(
+        makeQuestions(choices),
+        [{
+          type: "list",
+          name: "repository",
+          message: "Please select a repository",
+          loop: false,
+          choices: choices
+        }]
+      );
+
     });
 
   });
