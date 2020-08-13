@@ -1,8 +1,10 @@
 // Types
 import { Repository, Choice } from "../types";
 import { GlobalOptions } from "columnify";
+import { QuestionCollection, Answers } from "inquirer";
 // Libraries
 import columnify = require("columnify");
+import inquirer = require('inquirer');
 
 
 export function renderRepositories<R extends Repository>(repositories: R[]): string {
@@ -49,6 +51,16 @@ export function column2Choice(column: string): Choice[] {
   })
 }
 
-export function makeQuestions() {}
+export function makeQuestions(choices: Choice[]): QuestionCollection {
+  return [{
+    type: "list",
+    name: "repository",
+    message: "Please select a repository",
+    loop: false,
+    choices: choices
+  }];
+}
 
-export function prompt() {}
+export async function prompt(questions: QuestionCollection): Promise<Answers> {
+  return await inquirer.prompt(questions);
+}
