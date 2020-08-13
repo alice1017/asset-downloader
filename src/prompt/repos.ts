@@ -47,8 +47,8 @@ export function column2Choice(column: string): Choice[] {
       name: column,
       short: repo,
       value: repo
-    }
-  })
+    };
+  });
 }
 
 export function makeQuestions(choices: Choice[]): QuestionCollection {
