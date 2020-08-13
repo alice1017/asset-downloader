@@ -37,7 +37,17 @@ export function renderRepositories<R extends Repository>(repositories: R[]): str
 
 }
 
-export function column2Choice() {}
+export function column2Choice(column: string): Choice[] {
+  const columns: string[] = column.split("\n");
+  return columns.map(column => {
+    const repo = column.split(" ")[0];
+    return {
+      name: column,
+      short: repo,
+      value: repo
+    }
+  })
+}
 
 export function makeQuestions() {}
 
