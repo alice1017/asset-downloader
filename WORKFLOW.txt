@@ -1,0 +1,28 @@
+# WORKFLOW
+
+## step1. get target repository
+
+query     -> GithubAPIClient.search()   => repos        | api.ts
+repos     -> generateChoices()          => choices      | prompt/repos.ts
+choices   -> makeQuestions()            => questions    | prompt/repos.ts
+questions -> prompt()                   => answer(repo) | prompt/repos.ts
+
+## step2. get target releases
+
+repo      -> GithubAPIClient.releases() => releases        | api.ts
+releases  -> generateChoices()          => choices         | prompt/releases.ts
+choices   -> makeQuestions()            => questions       | prompt/releases.ts
+questions -> prompt()                   => answer(release) | prompt/releases.ts
+
+## step3. get target asset file
+
+releases  -> GithubAPIClient.assets()   => assets        | api.ts
+assets    -> generateChoices()          => choices       | prompt/asset.ts
+choices   -> makeQuestions()            => questions     | prompt/asset.ts
+questions -> prompt()                   => answer(asset) | prompt/asset.ts
+
+## step4. download asset
+
+release, asset -> GithubAPIClient.getAssetId() => assetId | api.ts
+assetId -> downloadAsset()                                | download.ts
+
