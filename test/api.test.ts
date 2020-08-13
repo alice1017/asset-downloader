@@ -63,6 +63,7 @@ describe("src/api.ts", () => {
         response.full_name,
         "peco/peco"
       );
+      mock.verify();
     });
 
   });
