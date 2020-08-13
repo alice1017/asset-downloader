@@ -6,14 +6,14 @@ query     -> GithubAPIClient.search()   => repos        | api.ts
 repos     -> renderRepositories()       => column       | prompt/repos.ts
 column    -> column2Choices()           => choices      | prompt/repos.ts
 choices   -> makeQuestions()            => questions    | prompt/repos.ts
-questions -> prompt()                   => answer(repo) | prompt/repos.ts
+questions -> prompt()                   => answer(repo) | prompt.ts
 
 ## step2. get target releases
 
 repo      -> GithubAPIClient.releases() => releases        | api.ts
 releases  -> renderReleases()           => column          | prompt/releases.ts
 column    -> column2Choices()           => choices         | prompt/releases.ts
-questions -> prompt()                   => answer(release) | prompt/releases.ts
+questions -> prompt()                   => answer(release) | prompt.ts
 
 ## step3. get target asset file
 
@@ -21,7 +21,7 @@ releases  -> GithubAPIClient.assets()   => assets        | api.ts
 assets    -> renderAssets()             => column        | prompt/assets.ts
 column    -> column2Choices()           => choices       | prompt/assets.ts
 choices   -> makeQuestions()            => questions     | prompt/assets.ts
-questions -> prompt()                   => answer(asset) | prompt/assets.ts
+questions -> prompt()                   => answer(asset) | prompt.ts
 
 ## step4. download asset
 

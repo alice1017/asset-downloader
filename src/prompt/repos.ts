@@ -60,7 +60,3 @@ export function makeQuestions(choices: Choice[]): QuestionCollection {
     choices: choices
   }];
 }
-
-export async function prompt(questions: QuestionCollection): Promise<Answers> {
-  return await inquirer.prompt(questions);
-}
