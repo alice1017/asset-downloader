@@ -42,26 +42,28 @@ describe("src/api.ts", () => {
 
   });
 
-  describe("Method: GithubAPIClient.repository", () => {
+  describe("Method: GithubAPIClient.releases", () => {
 
-    it("Repository full-name is 'peco/peco'", async () => {
+    it("Returns an array contains release objects", async () => {
 
       const octokit = new Octokit();
-      const mock = sinon.mock(octokit.repos).expects("get");
+      const mock = sinon.mock(octokit.repos).expects("listReleases");
       mock
         .withArgs()
         .returns({
-          data: {
-            full_name: "peco/peco"
-          }
+          data: [
+            {
+              id: 1
+            }
+          ]
         });
       mock.once();
 
       const client = new TestClient(octokit);
-      const response = await client.repository("peco", "peco");
+      const response = await client.releases("peco", "peco");
       assert.equal(
-        response.full_name,
-        "peco/peco"
+        response[0].id,
+        1
       );
       mock.verify();
     });

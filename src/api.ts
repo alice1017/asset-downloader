@@ -1,7 +1,7 @@
 // Types
 import {
   SearchReposResponseData,
-  ReposGetResponseData,
+  ReposListReleasesResponseData,
 } from "@octokit/types";
 // Libraries
 import { Octokit } from "@octokit/rest";
@@ -20,8 +20,8 @@ export class GithubAPIClient {
     return response.data;
   }
 
-  public async repository(owner: string, repo: string): Promise<ReposGetResponseData> {
-    const response = await this.octokit.repos.get({ owner, repo });
+  public async releases(owner: string, repo: string): Promise<ReposListReleasesResponseData>{
+    const response = await this.octokit.repos.listReleases({owner, repo});
     return response.data;
   }
 }
