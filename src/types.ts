@@ -13,5 +13,5 @@ export interface Repository {
 export interface Choice {
   name: string,
   value: string,
-  short: string
+  short?: string
 }
