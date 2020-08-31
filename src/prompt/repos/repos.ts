@@ -55,7 +55,7 @@ export function makeQuestions(choices: Choice[]): QuestionCollection {
   return [{
     type: "list",
     name: "repository",
-    message: "Please select a repository",
+    message: "Please select a repository what you want to download an asset",
     loop: false,
     choices: choices
   }];
