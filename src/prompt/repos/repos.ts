@@ -1,7 +1,7 @@
 // Types
-import { Repository, Choice } from "../types";
+import { Repository, Choice } from "../../types";
 import { GlobalOptions } from "columnify";
-import { QuestionCollection, Answers } from "inquirer";
+import { QuestionCollection } from "inquirer";
 // Libraries
 import columnify = require("columnify");
 import inquirer = require('inquirer');

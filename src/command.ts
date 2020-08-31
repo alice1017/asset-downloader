@@ -3,12 +3,7 @@
 import { Command, flags } from "@oclif/command";
 import { validateFlags } from "./validate";
 import { GithubAPIClient } from "./api";
-import {
-  renderRepositories,
-  column2Choice,
-  makeQuestions
-} from "./prompt/repos";
-import inquirer = require('inquirer');
+import { promptRepositories } from "./prompt/repos/";
 
 
 const pkg: any = require("../package.json");
@@ -40,10 +35,7 @@ export class ApplicationCommand extends Command {
 
       if (flags.query) {
         const { items: repositories } = await client.search(flags.query);
-        const column = renderRepositories(repositories);
-        const choices = column2Choice(column);
-        const questions = makeQuestions(choices);
-        const answer = await inquirer.prompt(questions);
+        const answer = await promptRepositories(repositories);
         resolve(answer.repository);
       }
 

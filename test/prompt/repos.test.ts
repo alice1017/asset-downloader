@@ -4,7 +4,7 @@ import {
   renderRepositories,
   column2Choice,
   makeQuestions
-} from "../../src/prompt/repos";
+} from "../../src/prompt/repos/repos";
 // Libraries
 import assert = require("assert");
 
