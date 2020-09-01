@@ -9,7 +9,7 @@ import {
 import assert = require("assert");
 
 
-describe("src/prompt/repos.ts", () => {
+describe("src/prompt/repos/repos.ts", () => {
 
   describe("Function: renderRepositories", () => {
 
