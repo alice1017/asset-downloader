@@ -1,11 +1,18 @@
 //Types
 import { Choice } from "../../types";
-import { ReposListReleasesResponseData } from '@octokit/types';
 import { QuestionCollection } from 'inquirer';
 //Libraries
 
 
-export function generateChoicesFromReleases(releases: ReposListReleasesResponseData): Choice[] {
+export interface Release {
+  tag_name: string,
+  assets: {
+    name: string,
+    browser_download_url: string
+  }[]
+};
+
+export function generateChoicesFromReleases<R extends Release[]>(releases: R): Choice[] {
 
   const choices: Choice[] = [];
 
