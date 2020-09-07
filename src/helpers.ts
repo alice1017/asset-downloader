@@ -3,5 +3,5 @@
 
 
 export function invalidRepository(repository: string): boolean {
-  return repository.includes("/") === true;
+  return repository.includes("/") === false;
 }

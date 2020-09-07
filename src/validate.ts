@@ -8,7 +8,7 @@ import { invalidRepository } from "./helpers";
 export function validateFlags(flags: Flags): Flags {
   const { repository } = flags;
 
-  if (repository && !invalidRepository(repository)) {
+  if (repository && invalidRepository(repository)) {
     throw Error(errors.got.invalid.repository);
   }
 
