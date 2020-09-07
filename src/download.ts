@@ -1,6 +1,5 @@
 // Types
 // Libraries
-import path = require("path");
 import { DownloaderHelper, FinalDownloadInfo } from "node-downloader-helper";
 import { SingleBar, Presets } from "cli-progress";
 
