@@ -70,32 +70,4 @@ describe("src/api.ts", () => {
 
   });
 
-  describe("Method: GithubAPIClient.assets", () => {
-
-    it("Returns an array contains asset objects", async () => {
-
-      const octokit = new Octokit();
-      const mock = sinon.mock(octokit.repos).expects("listReleaseAssets");
-      mock
-        .withArgs()
-        .returns({
-          data: [
-            {
-              name: "peco.zip"
-            }
-          ]
-        });
-      mock.once();
-
-      const client = new TestClient(octokit);
-      const response = await client.assets("peco", "peco", 1);
-      assert.equal(
-        response[0].name,
-        "peco.zip"
-      );
-      mock.verify();
-    });
-
-  });
-
 });

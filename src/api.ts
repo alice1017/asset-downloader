@@ -26,10 +26,4 @@ export class GithubAPIClient {
     return response.data;
   }
 
-  public async assets(owner: string, repo: string, releaseId: number): Promise<ReposListReleaseAssetsResponseData> {
-    const response = await this.octokit.repos.listReleaseAssets({
-      owner, repo, release_id: releaseId
-    });
-    return response.data;
-  }
 }
