@@ -38,7 +38,7 @@ export function makeQuestions(choices: Choice[]): QuestionCollection {
   return [
     {
       type: "list",
-      name: "releases",
+      name: "asset",
       message: "Please select an asset what you want to download",
       loop: false,
       choices: choices
