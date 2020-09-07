@@ -1,13 +1,12 @@
 // Types
-import { Repository, Choice } from "../../types";
+import { SearchAPIResult, Choice } from "../../types";
 import { GlobalOptions } from "columnify";
 import { QuestionCollection } from "inquirer";
 // Libraries
 import columnify = require("columnify");
-import inquirer = require('inquirer');
 
 
-export function renderRepositories<R extends Repository>(repositories: R[]): string {
+export function renderRepositories<S extends SearchAPIResult>(repositories: S[]): string {
 
   interface Column {
     repository: string,

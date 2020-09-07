@@ -5,7 +5,7 @@ export interface Flags {
   repository?: string
 };
 
-export interface Repository {
+export interface SearchAPIResult {
   full_name: string,
   description?: string
 }

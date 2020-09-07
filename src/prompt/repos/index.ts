@@ -1,5 +1,5 @@
 // Types
-import { Repository } from "../../types";
+import { SearchAPIResult } from "../../types";
 import { Answers } from "inquirer";
 // Libraries
 import inquirer = require('inquirer');
@@ -9,7 +9,7 @@ import {
   makeQuestions
 } from "./repos";
 
-export async function promptRepositories<R extends Repository>(repositories: R[]): Promise<Answers> {
+export async function promptRepositories<S extends SearchAPIResult>(repositories: S[]): Promise<Answers> {
   const column = renderRepositories(repositories);
   const choices = column2Choice(column);
   const questions = makeQuestions(choices);
