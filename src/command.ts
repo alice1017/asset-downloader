@@ -4,6 +4,8 @@ import { Command, flags } from "@oclif/command";
 import { validateFlags } from "./validate";
 import { GithubAPIClient } from "./api";
 import { promptRepositories } from "./prompt/repos/";
+import { promptAssets } from "./prompt/assets/";
+import { parseRepository } from './helpers';
 
 
 const pkg: any = require("../package.json");
@@ -31,7 +33,7 @@ export class ApplicationCommand extends Command {
     console.log(flags);
 
     const client = new GithubAPIClient();
-    const repository = await new Promise(async (resolve) => {
+    const repository: string = await new Promise(async (resolve) => {
 
       if (flags.query) {
         const { items: repositories } = await client.search(flags.query);
@@ -42,9 +44,19 @@ export class ApplicationCommand extends Command {
       else if (flags.repository) {
         resolve(flags.repository);
       }
+
     });
 
-    console.log(repository);
+    const assetUrl = await new Promise(async (resolve) => {
+
+      const { owner, repo } = parseRepository(repository);
+      const releases = await client.releases(owner, repo);
+      const asset = await promptAssets(releases);
+      resolve(asset);
+
+    });
+
+    console.log(assetUrl);
   }
 
 }
