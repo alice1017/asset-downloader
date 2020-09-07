@@ -15,3 +15,8 @@ export interface Choice {
   value: string,
   short?: string
 }
+
+export interface Repository {
+  owner: string,
+  repo: string
+}
