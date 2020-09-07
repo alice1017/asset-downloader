@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "rm -rf lib && tsc -b",
+    "prepare": "npm run build",
     "test": "mocha",
     "coverage": "nyc --extension .ts mocha --forbid-only",
     "report": "nyc report"
