@@ -45,7 +45,7 @@ describe("src/prompt/assets/assets.ts", () => {
         makeQuestions(choices),
         [{
           type: "list",
-          name: "releases",
+          name: "asset",
           message: "Please select an asset what you want to download",
           loop: false,
           choices: choices
