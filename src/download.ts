@@ -9,7 +9,7 @@ export async function download(url: string): Promise<FinalDownloadInfo> {
   return new Promise(resolve => {
 
     const bar = new SingleBar({}, Presets.shades_classic);
-    const downloader = new DownloaderHelper(url, __dirname);
+    const downloader = new DownloaderHelper(url, process.cwd());
     downloader
       .on("download", () => bar.start(100, 0))
       .on("end", result => {
