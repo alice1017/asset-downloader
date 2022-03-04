@@ -6,6 +6,7 @@ import { GithubAPIClient } from "./api";
 import { promptRepositories } from "./prompt/repos/";
 import { promptAssets } from "./prompt/assets/";
 import { parseRepository } from './helpers';
+import { download } from './download';
 
 
 const pkg: any = require("../package.json");
@@ -51,16 +52,16 @@ export class ApplicationCommand extends Command {
 
     });
 
-    const assetUrl = await new Promise(async (resolve) => {
-
+    const assetUrl: string = await new Promise(async (resolve) => {
       const { owner, repo } = parseRepository(repository);
       const releases = await client.releases(owner, repo);
       const asset = await promptAssets(releases);
-      resolve(asset);
-
+      resolve(asset.asset);
     });
 
-    console.log(assetUrl);
+    const { fileName } = await download(assetUrl);
+    this.log(`Downloaded: ${fileName}`);
+    this.exit(0);
   }
 
 }
