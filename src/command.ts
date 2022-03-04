@@ -30,7 +30,11 @@ export class ApplicationCommand extends Command {
   async run() {
     const context = this.parse(ApplicationCommand);
     const flags = validateFlags(context.flags);
-    console.log(flags);
+
+    if (!Object.keys(flags).length) {
+      this._help();
+      this.exit(1);
+    }
 
     const client = new GithubAPIClient();
     const repository: string = await new Promise(async (resolve) => {
