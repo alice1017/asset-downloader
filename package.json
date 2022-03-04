@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "author": "Alice1017",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alice1017/asset-downloader.git"
+  },
   "bin": {
     "asset-downloader": "./bin/run"
   },
