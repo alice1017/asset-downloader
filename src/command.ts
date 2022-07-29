@@ -52,14 +52,15 @@ export class ApplicationCommand extends Command {
 
     });
 
-    const assetUrl: string = await new Promise(async (resolve) => {
-      const { owner, repo } = parseRepository(repository);
-      const releases = await client.releases(owner, repo);
-      const asset = await promptAssets(releases);
-      resolve(asset.asset);
-    });
+    const { owner, repo } = parseRepository(repository);
+    const releases = await client.releases(owner, repo);
+    if (releases.length === 0) {
+      this.error('Release file not found in this repository.');
+      this.exit(1);
+    }
 
-    const { fileName } = await download(assetUrl);
+    const asset = await promptAssets(releases);
+    const { fileName } = await download(asset.asset);
     this.log(`Downloaded: ${fileName}`);
     this.exit(0);
   }

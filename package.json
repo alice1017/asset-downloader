@@ -1,7 +1,7 @@
 {
   "name": "asset-downloader",
   "description": "A command-line tool to download asset file of Github repository.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Alice1017",
   "license": "MIT",
   "repository": {
